@@ -1,0 +1,7 @@
+C:\Users\pak\source\repos\FilesSearch\FilesSearch\bin\Debug\FilesSearch.exe.config
+C:\Users\pak\source\repos\FilesSearch\FilesSearch\bin\Debug\FilesSearch.exe
+C:\Users\pak\source\repos\FilesSearch\FilesSearch\bin\Debug\FilesSearch.pdb
+C:\Users\pak\source\repos\FilesSearch\FilesSearch\obj\Debug\FilesSearch.csprojResolveAssemblyReference.cache
+C:\Users\pak\source\repos\FilesSearch\FilesSearch\obj\Debug\FilesSearch.csproj.CoreCompileInputs.cache
+C:\Users\pak\source\repos\FilesSearch\FilesSearch\obj\Debug\FilesSearch.exe
+C:\Users\pak\source\repos\FilesSearch\FilesSearch\obj\Debug\FilesSearch.pdb
