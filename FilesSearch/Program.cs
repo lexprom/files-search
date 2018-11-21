@@ -11,34 +11,33 @@ namespace FilesSearch
     {
         static void Main(string[] args)
         {
-            Console.OutputEncoding = Encoding.UTF8;
-            Console.WriteLine("Введите тип файла:");
-            var pattern = "*" + Console.ReadLine();
-            Console.WriteLine("Введите путь:");
-            string path;
-            try
+            var files = Directory.GetFiles("../../testFolder", "image*", SearchOption.AllDirectories);
+            var signature = getSignature("../../testFolder/image.jpg");
+            var result = files.Where(file => getSignature(file) == signature);
+
+            foreach (var item in result)
             {
-                while ((path = Console.ReadLine()) != "")
-                {
-                    Handle(path, pattern);
-                }
-            }
-            catch (DirectoryNotFoundException e)
-            {
-                Console.WriteLine("Error! {0}", e.Message);
+                Console.WriteLine(item);
             }
         }
 
-        static void Handle(string path, string pattern)
+        static string getSignature(string myFile)
         {
-            if (!Directory.Exists(path))
-                throw new DirectoryNotFoundException("Путь неверен");
-
-            var files = Directory.GetFiles(path, pattern, SearchOption.AllDirectories);
-            foreach (var file in files)
+            string signature = null;
+            using (var fs = new FileStream(myFile, FileMode.Open))
             {
-                Console.WriteLine(file);
+                var buffer = new byte[100];
+                fs.Read(buffer, 0, buffer.Length);
+                signature = string.Join(" ", buffer.Select(b => b.ToString("X2")));
+                //Console.WriteLine(signature);
+
+                /*if (signature.StartsWith("FF D8 FF E0"))
+                    Console.WriteLine("JPEG");
+
+                if (signature.StartsWith("89 50 4E 47 0D 0A 1A 0A"))
+                    Console.WriteLine("PNG");*/
             }
+            return signature;
         }
     }
 }
